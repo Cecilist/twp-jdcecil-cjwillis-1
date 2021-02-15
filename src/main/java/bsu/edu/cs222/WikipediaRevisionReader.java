@@ -32,7 +32,7 @@ public class WikipediaRevisionReader {
             connection.setRequestProperty("User-Agent",
                     "WikipediaRevisionReader/0.1 (http://www.cs.bsu.edu/~pvg/courses/cs222Sp21; jdcecil@bsu.edu)");
             InputStream inputStream = connection.getInputStream();
-           WikipediaRevisionParser parser = new WikipediaRevisionParser();
+           TimestampParser parser = new TimestampParser();
            return parser.parse(inputStream);
 
         } catch (MalformedURLException malformedURLException) {
