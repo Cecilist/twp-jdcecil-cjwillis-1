@@ -1,5 +1,6 @@
 package bsu.edu.cs222;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
@@ -12,33 +13,32 @@ public class WikipediaRevisionReader {
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
         try {
-            String revision = revisionsReader.getLatestRevision(line);
-            System.out.println((revision));
-            //System.out.println(revision.getEditor());
-            //System.out.println(revision.getTimestamp());
+            Revision revision = revisionsReader.getLatestRevision(line);
+            System.out.println(revision.getEditor());
+            System.out.println(revision.getTimestamp());
 
         } catch (IOException ioException) {
             System.err.println("Network connection error: " + ioException.getMessage());
         }
 
     }
-    private String getLatestRevision(String articleTitle) throws IOException {
-        String urlString = String.format("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=%s&rvprop=timestamp&rvlimit=1",
+    private Revision getLatestRevision(String articleTitle) throws IOException {
+        String urlString = String.format("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=%s&rvprop=timestamp&rvlimit=30",
                 articleTitle);
         String encodedUrlString = URLEncoder.encode(urlString, Charset.defaultCharset());
-        try{
+        try {
             URL url = new URL(encodedUrlString);
             URLConnection connection = url.openConnection();
             connection.setRequestProperty("User-Agent",
                     "WikipediaRevisionReader/0.1 (http://www.cs.bsu.edu/~pvg/courses/cs222Sp21; jdcecil@bsu.edu)");
             InputStream inputStream = connection.getInputStream();
-           TimestampParser parser = new TimestampParser();
-           return parser.parse(inputStream);
+            TimestampParser timestampParser = new TimestampParser();
+            EditorParser editorParser = new EditorParser();
+            return new Revision(editorParser.parse(inputStream), timestampParser.parse(inputStream));
 
         } catch (MalformedURLException malformedURLException) {
             throw new RuntimeException(malformedURLException);
         }
-
 
     }
 }
