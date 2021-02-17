@@ -15,3 +15,5 @@ appropriate for printing, following the given functional requirements
   
 - Create a command line application that gets input, hands input off to other modules,
 gets results and prints as appropriate. 
+  
+- Modify proper timestamp strings to proper variable for timestamps
