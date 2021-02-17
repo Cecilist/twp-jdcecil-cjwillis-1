@@ -7,16 +7,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class TimestampParserTest {
+public class WikipediaParserTest {
     @Test
-    public void testParse() throws IOException {
-        String expected = "2021-02-11T01:44:40Z";
+    public void testParse_TRUE() throws IOException {
+
+        Revision expected = new Revision("Valereee", "2021-02-11T01:44:40Z");
 
         InputStream testStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("Pizza.json");
 
-        TimestampParser parser = new TimestampParser();
+        WikipediaParser wikipediaParser = new WikipediaParser();
 
-        String actual = parser.parse(testStream);
+        Revision actual = wikipediaParser.parse(testStream);
 
 
         Assertions.assertEquals(expected, actual);
