@@ -4,32 +4,32 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class WikipediaGUIMain extends Application {
 
         private final TextField inputField  = new TextField();
-        private final TextField outputField = new TextField();
+        private final TextArea outputArea = new TextArea();
 
         @Override
-        public void start(Stage primaryStage) {
-            Button button = new Button("Get revitions for title");
+        public void start(Stage primaryStage)  {
+            Button button = new Button("Get revisions for title");
             button.setOnAction((event)->{
-                String title = inputField.getText();
-                WikipediaConnection connection = new WikipediaConnection();
-                ArrayList<Object> revisions = null;
+                String articleTitle = inputField.getText();
+                Revisions Format = new Revisions();
+                String FormattedRevisions = null;
                 try {
-                    revisions = (WikipediaParser.parseForRevisions(connection.Connection(title)));
+                    FormattedRevisions = Format.FormatRevisions(articleTitle);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                outputField.setText(String.valueOf(revisions));
+                outputArea.setText(FormattedRevisions);
             });
             VBox box = new VBox();
             box.getChildren().addAll(makeTopBox(), button,  makeBottomBox());
@@ -45,7 +45,9 @@ public class WikipediaGUIMain extends Application {
 
         private HBox makeBottomBox() {
             HBox bottomBox = new HBox();
-            bottomBox.getChildren().addAll(new Label("Output: "), outputField);
+            outputArea.setPrefWidth(400);
+            outputArea.setPrefHeight(600);
+            bottomBox.getChildren().addAll(new Label("Output: "), outputArea);
             return bottomBox;
         }
 

@@ -27,4 +27,4 @@ gets results and prints as appropriate.
 
 - Reformat tests
   
-- Get GUI to work. 
+- Fix GUI so that it compiles 
