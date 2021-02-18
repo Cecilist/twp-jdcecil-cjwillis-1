@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class RevisionFormatter {
     public RevisionFormatter(ArrayList<Object> revisions) {
-        for (Object revision : revisions) {
-            String revisionstr = revision.toString();
-            String[] arrOfStr = revisionstr.split("=", 5);
-            String strforname = arrOfStr[1];
-            String strfortime = arrOfStr[2];
-            String[] arrusername = strforname.split(",", 5);
-            String username = arrusername[0];
-            String[] arrytime = strfortime.split(",", 5);
-            String time = arrytime[0];
+        for (Object Revision : revisions) {
+            String revision = Revision.toString();
+            String[] arrOfStr = revision.split("=", 5);
+            String name = arrOfStr[1];
+            String timestamp = arrOfStr[2];
+            String[] usernameArray = name.split(",", 5);
+            String username = usernameArray[0];
+            String[] timestampArray = timestamp.split(",", 5);
+            String time = timestampArray[0];
             System.out.println(time+ " "+ username );
         }
     }
