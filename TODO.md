@@ -23,8 +23,4 @@ gets results and prints as appropriate.
 
 - Implement notice to user if wikipedia article given doesn't exactly match input (redirect)
 
-- Fix URL to work with titles that include spaces (Encode)
-
 - Reformat tests
-  
-- Fix GUI so that it compiles 
