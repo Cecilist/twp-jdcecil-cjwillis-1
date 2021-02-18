@@ -9,7 +9,7 @@ import java.io.InputStream;
 public class wikipediaParserTest {
     @Test
     public void editorParseTest() throws IOException {
-        wikipediaParser parser = new wikipediaParser();
+        WikipediaParser parser = new WikipediaParser();
         InputStream testDataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("Pizza.json");
         String username = parser.editorParser(testDataStream).get(0).toString();
         Assertions.assertEquals("Valereee", username);
@@ -17,7 +17,7 @@ public class wikipediaParserTest {
     }
     @Test
     public void TimestampParserTest() throws IOException {
-        wikipediaParser parser = new wikipediaParser();
+        WikipediaParser parser = new WikipediaParser();
         InputStream testDataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("Pizza.json");
         String timestamp = parser.timeStampParser(testDataStream).get(0).toString();
         Assertions.assertEquals("2021-02-11T01:44:40Z", timestamp);

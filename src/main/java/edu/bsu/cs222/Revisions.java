@@ -8,7 +8,7 @@ import java.io.IOException;
         private final WikipediaConnection Connection = new WikipediaConnection();
         public String FormattedRevision = "";
         public String FormatRevisions(String articleTitle) throws IOException {
-            wikipediaParser parser = new wikipediaParser();
+            WikipediaParser parser = new WikipediaParser();
             JSONArray TimeStamp = parser.timeStampParser(Connection.Connection(articleTitle));
             JSONArray Username = parser.editorParser(Connection.Connection(articleTitle));
             for(int i=0; i<TimeStamp.size(); i++)

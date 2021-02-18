@@ -45,6 +45,7 @@ public class WikipediaGUIMain extends Application {
 
         private HBox makeBottomBox() {
             HBox bottomBox = new HBox();
+            outputArea.setDisable(true);
             outputArea.setPrefWidth(400);
             outputArea.setPrefHeight(600);
             bottomBox.getChildren().addAll(new Label("Output: "), outputArea);

@@ -5,7 +5,7 @@ import net.minidev.json.JSONArray;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class wikipediaParser {
+public class WikipediaParser {
     public JSONArray timeStampParser(InputStream wikiInputStream) throws IOException {
         return JsonPath.read(wikiInputStream, "$..timestamp");
 

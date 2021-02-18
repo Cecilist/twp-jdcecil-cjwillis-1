@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class WikipediaCommandLineMain {
     public static void main(String[] args) throws IOException {
-        getWikipediaTitle title = new getWikipediaTitle();
+        GetWikipediaTitle title = new GetWikipediaTitle();
         Revisions Format = new Revisions();
         String articleTitle = title.getArticleTitle();
         String FormattedRevisions = Format.FormatRevisions(articleTitle);
