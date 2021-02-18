@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class WikipediaParser {
 
     public static ArrayList<Object> parseForRevisions(InputStream inputStream) throws IOException {
-        return JsonPath.<JSONArray>read(inputStream, "$..revisions[*]");
+        return JsonPath.read(inputStream, "$..revisions[*]");
+
+
     }
 }

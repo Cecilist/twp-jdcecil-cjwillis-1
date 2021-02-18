@@ -19,7 +19,7 @@ public class WikipediaGUIMain extends Application {
 
         @Override
         public void start(Stage primaryStage) {
-            Button button = new Button("Get revitions for title");
+            Button button = new Button("Get revisions for title");
             button.setOnAction((event)->{
                 String title = inputField.getText();
                 WikipediaConnection connection = new WikipediaConnection();
