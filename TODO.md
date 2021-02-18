@@ -21,6 +21,4 @@ gets results and prints as appropriate.
 --------------
 - Implement error codes as described by functional requirements.
 
-- Implement notice to user if wikipedia article given doesn't exactly match input (redirect)
-
 - Reformat tests

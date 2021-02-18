@@ -9,13 +9,24 @@ import java.io.IOException;
         public String FormattedRevision1 = "";
         public String FormattedRevision2 = "";
         public String FormatRevisions(String articleTitle) throws IOException {
-            WikipediaParser parser = new WikipediaParser();
+            wikipediaParser parser = new wikipediaParser();
             JSONArray TimeStamp = parser.timeStampParser(Connection.Connection(articleTitle));
             JSONArray Username = parser.editorParser(Connection.Connection(articleTitle));
-            for(int i=0; i<TimeStamp.size(); i++) {
+            JSONArray redirects = parser.redirectParser(Connection.Connection(articleTitle));
+            for(int i=0; i<TimeStamp.size(); i++)
+            {
                 FormattedRevision2 = FormattedRevision1;
-                FormattedRevision1 = FormattedRevision2 + TimeStamp.get(i) + " " + Username.get(i) + "\n";
+                FormattedRevision1 = FormattedRevision1  + TimeStamp.get(i) + " " + Username.get(i) + "\n";
             }
-            return FormattedRevision1;
+            System.out.println(redirects.toString());
+            if (redirects.toString().equals("[]")){
+                return articleTitle + "\n" +
+                        "Most Resent Revisions" +"\n" +
+                        FormattedRevision1;
+            } else {
+                return articleTitle + " redirected to " + redirects + "\n" +
+                        "Most Resent Revisions" + "\n" +
+                        FormattedRevision1;
+            }
         }
     }

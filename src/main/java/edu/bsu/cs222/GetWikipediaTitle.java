@@ -2,7 +2,7 @@ package edu.bsu.cs222;
 
 import java.util.Scanner;
 
-public class GetWikipediaTitle {
+public class getWikipediaTitle {
     public String getArticleTitle() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter a Wikipedia page title ");
@@ -10,7 +10,7 @@ public class GetWikipediaTitle {
         //Not sure if this actually exits with error code 1.
         if (title == null) {
             System.err.println("Article name required");
-            System.exit(1);
+            System.exit(0);
         }
             return title;
     }

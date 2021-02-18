@@ -51,5 +51,4 @@ public class WikipediaGUIMain extends Application {
             bottomBox.getChildren().addAll(new Label("Output: "), outputArea);
             return bottomBox;
         }
-
     }
