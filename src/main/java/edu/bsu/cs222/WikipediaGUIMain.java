@@ -29,6 +29,14 @@ public class WikipediaGUIMain extends Application {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                if (articleTitle.equals("")) {
+                    System.err.println("Article name required");
+                    FormattedRevisions = "Please enter an article name";
+
+                }
+                System.out.println(articleTitle);
+
+
                 outputArea.setText(FormattedRevisions);
             });
             VBox box = new VBox();

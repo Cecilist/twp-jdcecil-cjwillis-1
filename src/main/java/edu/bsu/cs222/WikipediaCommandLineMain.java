@@ -4,9 +4,13 @@ import java.io.IOException;
 
 public class WikipediaCommandLineMain {
     public static void main(String[] args) throws IOException {
-        getWikipediaTitle title = new getWikipediaTitle();
+        GetWikipediaTitle title = new GetWikipediaTitle();
         Revisions Format = new Revisions();
         String articleTitle = title.getArticleTitle();
+        if (articleTitle.equals("")) {
+            System.err.println("Article name required");
+            System.exit(0);
+        }
         String FormattedRevisions = Format.FormatRevisions(articleTitle);
         System.out.println(FormattedRevisions);
         System.exit(0);
