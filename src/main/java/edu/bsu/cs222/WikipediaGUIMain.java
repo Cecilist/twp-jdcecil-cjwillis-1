@@ -22,23 +22,23 @@ public class WikipediaGUIMain extends Application {
             Button button = new Button("Get revisions for title");
             button.setOnAction((event)->{
                 String articleTitle = inputField.getText();
+
                 Revisions Format = new Revisions();
                 String FormattedRevisions = null;
-                try {
-                    FormattedRevisions = Format.FormatRevisions(articleTitle);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 if (articleTitle.equals("")) {
                     System.err.println("Article name required");
                     FormattedRevisions = "Please enter an article name";
 
                 }
-                System.out.println(articleTitle);
-
+                try {
+                    FormattedRevisions = Format.FormatRevisions(articleTitle);
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
 
                 outputArea.setText(FormattedRevisions);
             });
+
             VBox box = new VBox();
             box.getChildren().addAll(makeTopBox(), button,  makeBottomBox());
             primaryStage.setScene(new Scene(box));

@@ -12,6 +12,9 @@ public class WikipediaCommandLineMain {
             System.exit(0);
         }
         String FormattedRevisions = Format.FormatRevisions(articleTitle);
+        if (FormattedRevisions == "Invalid Wikipedia Title!") {
+            System.exit(2);
+        }
         System.out.println(FormattedRevisions);
         System.exit(0);
     }
